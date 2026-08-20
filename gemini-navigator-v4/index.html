@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b2f63">
+<title>Gemini Navigator 4｜臺灣方案與應用選型</title>
+<style>
+html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif;background:#f4f7fb;color:#10253f}
+main{min-height:100vh;display:grid;place-items:center;padding:24px;text-align:center}
+.card{max-width:520px;padding:28px 22px;border:1px solid #d5e1ed;border-radius:20px;background:#fff;box-shadow:0 12px 32px rgba(11,47,99,.09)}
+.mark{width:56px;height:56px;margin:0 auto 14px;display:grid;place-items:center;border-radius:17px;background:linear-gradient(145deg,#0b2f63,#2674bb);color:#fff;font-size:28px}
+h1{margin:0;font-size:1.3rem}p{margin:9px 0 0;color:#5d7187;line-height:1.6}button{min-height:48px;margin-top:16px;padding:10px 16px;border:0;border-radius:13px;background:#0b2f63;color:#fff;font:inherit;font-weight:800}
+</style>
+</head>
+<body><main><section class="card"><div class="mark">✦</div><h1>Gemini Navigator</h1><p id="status">正在載入 4.0.0…</p><button id="retry" type="button" hidden>重新載入</button></section></main>
+<script>
+(async()=>{
+ const status=document.getElementById('status'); const retry=document.getElementById('retry');
+ retry.addEventListener('click',()=>location.reload());
+ try{
+  if(!('DecompressionStream' in window)) throw new Error('此瀏覽器版本不支援必要的解壓縮功能，請更新 Chrome、Safari 或 Edge。');
+  const files=["p/0.txt?v=4.0.0", "p/1.txt?v=4.0.0", "p/2.txt?v=4.0.0", "p/3.txt?v=4.0.0", "p/4.txt?v=4.0.0", "p/5.txt?v=4.0.0"];
+  const parts=await Promise.all(files.map(async u=>{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error('載入檔案失敗：'+u);return r.text();}));
+  const bin=atob(parts.join('')); const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));
+  const html=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+  document.open(); document.write(html); document.close();
+ }catch(e){status.textContent=e.message||'網站載入失敗'; retry.hidden=false; console.error(e);}
+})();
+</script></body></html>
