@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b2d5b">
+<meta name="description" content="Gemini 家族、Google AI 個人方案、Workspace 與企業應用的互動選型網站。">
+<title>Gemini Navigator｜方案與應用選型</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">跳至主要內容</a>
+<header class="topbar">
+  <div class="brand"><span class="spark">✦</span><div><b>Gemini Navigator</b><small>方案與應用選型</small></div></div>
+  <div class="top-actions"><button id="fontBtn" aria-label="調整字級">Aa</button><button id="shareBtn">分享</button></div>
+</header>
+<main id="main">
+<section class="hero">
+  <p class="eyebrow">GEMINI DECISION WORKSPACE</p>
+  <h1>先依需求選工具，再比較方案</h1>
+  <p>區分個人訂閱、Google Workspace、開發者 API 與企業代理平台，避免把同名模型與方案混為一談。</p>
+</section>
+
+<section class="view active" id="view-overview">
+  <div class="head"><div><span class="eyebrow">01 OVERVIEW</span><h2>你的工作臺</h2></div><button id="editBtn" class="secondary">編輯版面</button></div>
+  <div class="profile card">
+    <label>身分<select id="role"><option value="professional">知識工作者</option><option value="trainer">講師／教育工作者</option><option value="developer">開發者</option><option value="manager">企業管理者</option></select></label>
+    <label>主要目標<select id="goal"><option value="daily">日常生產力</option><option value="research">研究與知識整理</option><option value="automation">流程自動化</option><option value="content">內容與教材</option><option value="build">建立 AI 應用</option><option value="governance">企業治理</option></select></label>
+    <label>資料層級<select id="data"><option value="public">公開／模擬資料</option><option value="internal">組織內部資料</option><option value="sensitive">敏感／受管制資料</option></select></label>
+    <button id="arrangeBtn" class="primary">套用智慧配置</button>
+  </div>
+  <p id="profileNote" class="note" aria-live="polite"></p>
+  <div id="editBar" class="editbar" hidden><b>拖曳把手排序；手機也可使用上移、下移。</b><button id="doneBtn">完成</button><button id="resetBtn">還原</button></div>
+  <div id="dashboard" class="dashboard"></div>
+</section>
+
+<section class="view" id="view-compare">
+  <div class="head"><div><span class="eyebrow">02 PLANS</span><h2>個人方案比較</h2></div></div>
+  <p class="notice">Google AI 個人方案不等於 Workspace 或 Gemini Enterprise 授權。</p>
+  <div class="picker card">
+    <label>方案 A<select id="planA"></select></label>
+    <button id="swapBtn" aria-label="交換方案">⇄</button>
+    <label>方案 B<select id="planB"></select></label>
+  </div>
+  <div class="filters">
+    <label>功能搜尋<input id="planSearch" type="search" placeholder="例如 Spark、脈絡、Notebook"></label>
+    <label>分類<select id="planGroup"></select></label>
+  </div>
+  <div id="compareResult" class="compare"></div>
+</section>
+
+<section class="view" id="view-apps">
+  <div class="head"><div><span class="eyebrow">03 USE CASES</span><h2>依工作情境選工具</h2></div></div>
+  <div id="appFilters" class="chips" aria-label="應用分類"></div>
+  <div id="apps" class="apps"></div>
+</section>
+
+<section class="view" id="view-advisor">
+  <div class="head"><div><span class="eyebrow">04 ADVISOR</span><h2>選型助手</h2></div></div>
+  <form id="advisor" class="advisor card">
+    <fieldset><legend>使用帳號</legend><label><input type="radio" name="account" value="personal" checked>個人 Google 帳號</label><label><input type="radio" name="account" value="workspace">公司／學校 Workspace</label><label><input type="radio" name="account" value="developer">開發者／Cloud 專案</label></fieldset>
+    <label>主要目標<select name="goal"><option value="daily">日常生產力</option><option value="research">研究整理</option><option value="automation">流程自動化</option><option value="content">內容生成</option><option value="build">建立產品</option><option value="governance">企業治理</option></select></label>
+    <label>資料層級<select name="data"><option value="public">公開資料</option><option value="internal">內部資料</option><option value="sensitive">敏感資料</option></select></label>
+    <label>自動化程度<select name="automation"><option value="assist">AI 協助，人工執行</option><option value="draft">自動產生草稿，人工核准</option><option value="agent">代理執行多步驟工作</option></select></label>
+    <label>使用規模<select name="scale"><option value="one">個人</option><option value="team">團隊</option><option value="org">全組織</option></select></label>
+    <button class="primary" type="submit">產生建議</button>
+  </form>
+  <div id="advisorResult" class="result card" aria-live="polite"></div>
+</section>
+
+<section class="view" id="view-guide">
+  <div class="head"><div><span class="eyebrow">05 PRODUCT MAP</span><h2>產品邊界</h2></div></div>
+  <div id="layers" class="layers"></div>
+  <p class="source">資料基準：2026-08-20。方案、額度、地區與分批開放狀態應以 Google 臺灣官方頁面及帳號實際顯示為準。</p>
+</section>
+</main>
+<nav class="bottom" aria-label="主要導覽">
+<button data-view="overview" class="active">總覽</button><button data-view="compare">方案</button><button data-view="apps">應用</button><button data-view="advisor">選型</button><button data-view="guide">產品</button>
+</nav>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
