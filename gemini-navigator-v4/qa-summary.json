@@ -9,5 +9,6 @@
   "decision_combinations": 2268,
   "responsive_widths": [320, 360, 390, 412, 768, 1024, 1440],
   "sha256": "f5f62f09c79f3c2c5aee14fe7c0ad8bf9b32be32b006ed73db5da6faef49c3c1",
-  "chunks": 6
+  "deployment_chunks": 7,
+  "entry_path": "gemini-navigator-v4/index.html"
 }
